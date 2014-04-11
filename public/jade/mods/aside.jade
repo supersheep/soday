@@ -1,0 +1,29 @@
+mixin add(click)
+    .add
+        .add-btn.icon-plus(ng-click="#{click}")
+
+div.aside
+    .head
+        .tit {{title}}
+        .date {{date}}
+    .cards-wrap
+        ul.cards
+            +add("addBeforeFirst($index)")
+            li(ng-repeat="card in cards")
+                div(ng-class="{'add':'card add','view':'card view'}[card.mod]")
+                    .state-view
+                        | view
+                        .tit {{card.title}}
+                        .addr {{card.addr}}
+                        .comment {{card.comment}}
+                        .remove
+                    form.state-add(ng-submit="search()")
+                        input.search-input(type="text",ng-model="keywords",placeholder="搜索活动或餐馆")
+    .options-wrap
+        ul.options
+            li(ng-repeat="card in options")
+                .state-view(ng-click="chose")
+                    | view
+                    .tit {{card.title}}
+                    .addr {{card.addr}}
+                    .comment {{card.comment}}

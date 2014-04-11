@@ -1,0 +1,64 @@
+.aside
+    position: absolute
+    top: 40px
+    left: 40px
+    z-index: 10
+    width: 400px
+    border-radius: 5px
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4)
+    >.head
+        font-size: 24px
+        padding: 20px
+        border-radius: 5px 5px 0 0
+        color: #fff
+        background-color: #379e65
+    >.date
+        font-size: 14px
+        background-color: #ccc
+    .cards-wrap
+        height: 450px
+        background-color: #fff
+    .cards
+        .add
+            padding: 20px
+            text-align: center
+            .add-btn
+                text-align: center
+                background-color: #ccc
+                border-radius: 12px
+                width: 24px
+                height: 24px
+                font-size: 18px
+                line-height: 24px
+                color: #fff
+                background: #666
+                margin: 0 auto
+        .card
+            background-color: #fff
+            padding: 20px
+            height: 100px
+            border-bottom: 1px solid #eee
+            -webkit-transition: all .2s linear
+            &:hover
+                background-color: #eee
+                cursor: pointer
+        .add
+            .state-add
+                display: block
+                .search-input
+                    width: 200px
+                    border: 1px solid #ccc
+                    padding: 5px
+                    height: 20px
+                    border-radius: 5px
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.3)
+            .state-view
+                display: none
+        .view
+            .state-add
+                display: none
+            .state-view
+                display: block
+                position: relative
+                &:hover .remove
+                    position: absolute
