@@ -8,8 +8,7 @@ ACCESS_TOKEN = 'd8f759aa3b25ece68ae60cfeb171c6b2'
 
 client = DoubanClient(API_KEY, API_SECRET, 'http://soday.spud.in', SCOPE)
 
+client.auth_with_password('mchainy@sina.com','watakushi')
 
-
-client.auth_with_token(ACCESS_TOKEN)
-
-print client.event.list(108296, 'week', 'all', '2014-04-10', 1)
+def get_douban_eventlist(date):
+	return client.event.list(108296, 'day', 'all', date, 15)

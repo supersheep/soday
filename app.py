@@ -4,6 +4,7 @@ from flask import Flask, jsonify, url_for
 from flask import request
 import dpapi
 import mongocli
+import doubanapi
 import json
 
 app = Flask(__name__, static_url_path='')
@@ -37,9 +38,16 @@ def get_search_dpshop():
 	if not request.args.get('category'):
 		return jsonify({"result":"badrequest"})
 	else:
-		# query = {"category":request.args.get('category'),"keyword":request.args.get('keyword'),"latitude":request.args.get('latitude'),"longitude":request.args.get("longitude")}
 		query = request.args
 		return (json.dumps(dpapi.get_nearby_dpinfo(query)))
+
+@app.route('/tourlist/api/searchdoubanevent',methods=['GET'])
+def get_douban_events():
+	if not request.args.get('date'):
+		return jsonify({"result":"badrequest"})
+	else:
+		query = request.args.get('date')
+		return json.dumps(doubanapi.get_douban_eventlist(query))
 
 @app.route('/')
 def index():
