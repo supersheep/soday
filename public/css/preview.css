@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  background: url("../img/bg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+html body {
+  background-color: transparent;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei";
+}
+html body .board {
+  width: 760px;
+  margin: 50px auto;
+}
+html body .destination {
+  opacity: 0.92;
+  margin-bottom: 25px;
+  background-color: #fff;
+}
+html body .destination .title {
+  padding: 10px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #4b5f70;
+}
+html body .destination .detail {
+  padding: 15px;
+}
+html body .destination .detail .pic-area img {
+  width: 100%;
+}
+html body .destination .detail .txt-area .item {
+  border-bottom: 2px dotted #4b5f70;
+  padding: 10px 0px;
+}
+html body .destination .detail .txt-area .item .name {
+  font-size: 16px;
+  color: #4b5f70;
+  margin-right: 10px;
+}
+html body .destination .detail .txt-area .item .content {
+  color: #636363;
+  font-size: 14px;
+}
+html body .destination .detail .txt-area .description {
+  padding: 10px 0px;
+}
+html body .destination .detail .txt-area .description .name {
+  font-size: 16px;
+  color: #4b5f70;
+  margin-bottom: 6px;
+}
+html body .destination .detail .txt-area .description p {
+  padding-right: 15px;
+  font-size: 14px;
+  color: #636363;
+}
