@@ -9,6 +9,15 @@ var Card = function(settings){
 }
 
 
+// /tourlist/api/searchdpshop?query={"keyword":"中山公园","category":["美食","休闲娱乐"]}
+// /tourlist/api/searchdpshop?query={
+//     keyword:
+//     category:
+// }
+// /tourlist/api/nearbydpshop?query={"latitude":"31.21524","longitude":"121.420033","category":"美食"}
+
+// /tourlist/api/add
+//     : id
 
 function initAside(){
 
@@ -33,6 +42,38 @@ function initMap(){
 
 
 var app = angular.module("soday",[]);
+
+app.factory("SearchService",["$http", function($http){
+    return {
+        get: function(opt){
+            opt = opt || {};
+            var data = {
+                "category": opt.category,
+                "keyword": opt.keyword
+            };
+            return $http.get("/tourlist/api/searchdpshop",{
+                params: {
+                    query: JSON.stringify(data)
+                }
+            });
+        },
+        nearby: function(opt){
+            opt = opt || {};
+            var latlng = opt.latlng;
+            var data = {
+                "latitude": latlng.lat,
+                "longitude": latlng.lng,
+                "category": opt.category
+            }
+            return $http.get("/tourlist/api/nearbydpshop",{
+                params: {
+                    query: JSON.stringify(data)
+                }
+            });
+        }
+    }
+}]);
+
 
 app.controller("SodayCtrl",["$scope","$http",function($scope,$http){
     $scope.title = "钱满和嘟嘟的周末";
