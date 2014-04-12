@@ -400,9 +400,8 @@ body {
   color: #fff;
   background-color: #379e65;
 }
-.aside >.date {
+.aside >.head .date {
   font-size: 14px;
-  background-color: #ccc;
 }
 .aside .cards-wrap {
   height: 450px;
