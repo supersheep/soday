@@ -29,95 +29,94 @@ html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
   background-size: cover;
 }
-html body {
+body {
   background-color: transparent;
   width: 800px;
   margin: 50px auto;
   font-family: "Hiragino Sans GB", "Microsoft YaHei";
 }
-html body .abstract {
+.abstract {
   background: #fafafa;
   border: 1px solid #eee;
   margin-bottom: 20px;
 }
-html body .abstract .description {
+.abstract .description {
   padding: 0 30px;
 }
-html body .abstract .description .date {
+.abstract .description .date {
   margin-top: 20px;
 }
-html body .abstract .description .title {
+.abstract .description .title {
   font-size: 34px;
   padding: 10px 0px;
 }
-html body .abstract .description .users img {
+.abstract .description .users img {
   width: 34px;
   height: 34px;
   margin-right: 10px;
 }
-html body .abstract .map img {
+.abstract .map img {
   width: 400px;
 }
-html body .board-container {
+.board-container {
   background: #fafafa;
   border: 1px solid #eee;
 }
-html body .board-container .board {
+.board {
   margin: 20px 20px;
 }
-html body .board-container .board .destination {
+.board .destination {
   margin-bottom: 25px;
   background-color: transparent;
 }
-html body .board-container .board .destination .title {
+.board .destination .title {
   padding: 10px;
   font-size: 18px;
   color: #fff;
   background-color: #379e65;
 }
-html body .board-container .board .destination .detail {
+.board .destination .detail {
   margin: 0;
   padding: 15px 0px;
 }
-html body .board-container .board .destination .detail .pic-area {
+.board .destination .detail .pic-area {
   padding-left: 0px;
 }
-html body .board-container .board .destination .detail .pic-area img {
+.board .destination .detail .pic-area img {
   width: 100%;
 }
-html body .board-container .board .destination .detail .txt-area {
+.board .destination .detail .txt-area {
   padding-left: 10px;
 }
-html body .board-container .board .destination .detail .txt-area .item {
+.board .destination .detail .txt-area .item {
   border-bottom: 2px solid #ddd;
   padding: 10px 0px;
 }
-html body .board-container .board .destination .detail .txt-area .item .name {
+.board .destination .detail .txt-area .item .name {
   font-size: 16px;
   color: #379e65;
   margin-right: 10px;
 }
-html body .board-container .board .destination .detail .txt-area .item .content {
+.board .destination .detail .txt-area .item .content {
   color: #636363;
   font-size: 14px;
 }
-html body .board-container .board .destination .detail .txt-area .description {
+.board .destination .detail .txt-area .description {
   padding: 10px 0px;
 }
-html body .board-container .board .destination .detail .txt-area .description .name {
+.board .destination .detail .txt-area .description .name {
   font-size: 16px;
   color: #379e65;
   margin-bottom: 6px;
 }
-html body .board-container .board .destination .detail .txt-area .description p {
+.board .destination .detail .txt-area .description p {
   padding-right: 5px;
   font-size: 14px;
   color: #636363;
 }
-html body .board-container .board .destination .distance {
+.board .destination .distance {
   color: #379e65;
+  color: rgba(51,119,153,0.933);
 }
