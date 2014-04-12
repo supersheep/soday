@@ -10,8 +10,11 @@ tours = db.tours
 
 def get_max_planid():
 	maxresult = tours.find_one(sort=[("planid", -1)])
-	maxresult["_id"] = None
-	return maxresult["planid"]
+	if "planid" in maxresult:
+		maxresult["_id"] = None
+		return maxresult["planid"]
+	else:
+		return 0
 
 def insert_tour(data):
 	tours.insert(data)

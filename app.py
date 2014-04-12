@@ -34,10 +34,11 @@ def update_tour(planid):
 
 @app.route('/tourlist/api/searchdpshop', methods=['GET'])
 def get_search_dpshop():
-	if not request.args.get('query'):
+	if not request.args.get('category'):
 		return jsonify({"result":"badrequest"})
 	else:
-		query = json.loads(request.args.get('query'))
+		# query = {"category":request.args.get('category'),"keyword":request.args.get('keyword'),"latitude":request.args.get('latitude'),"longitude":request.args.get("longitude")}
+		query = request.args
 		return (json.dumps(dpapi.get_nearby_dpinfo(query)))
 
 @app.route('/')
