@@ -33,62 +33,89 @@ html {
 }
 html body {
   background-color: transparent;
+  width: 800px;
+  margin: 50px auto;
   font-family: "Hiragino Sans GB", "Microsoft YaHei";
 }
-html body .board {
-  width: 760px;
-  margin: 50px auto;
+html body .abstract {
+  background: #fafafa;
+  border: 1px solid #eee;
+  margin-bottom: 20px;
 }
-html body .destination {
+html body .abstract .description {
+  padding: 0 30px;
+}
+html body .abstract .description .date {
+  margin-top: 20px;
+}
+html body .abstract .description .title {
+  font-size: 34px;
+  padding: 10px 0px;
+}
+html body .abstract .description .users img {
+  width: 34px;
+  height: 34px;
+  margin-right: 10px;
+}
+html body .abstract .map img {
+  width: 400px;
+}
+html body .board-container {
+  background: #fafafa;
+  border: 1px solid #eee;
+}
+html body .board-container .board {
+  margin: 20px 20px;
+}
+html body .board-container .board .destination {
   margin-bottom: 25px;
   background-color: transparent;
-  box-shadow: 0px 1px 1px rgba(0,0,0,0.4);
 }
-html body .destination .title {
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
+html body .board-container .board .destination .title {
   padding: 10px;
   font-size: 18px;
   color: #fff;
   background-color: #379e65;
 }
-html body .destination .detail {
-  border: 1px solid #ddd;
+html body .board-container .board .destination .detail {
   margin: 0;
-  padding: 15px;
+  padding: 15px 0px;
 }
-html body .destination .detail .pic-area {
+html body .board-container .board .destination .detail .pic-area {
   padding-left: 0px;
 }
-html body .destination .detail .pic-area img {
+html body .board-container .board .destination .detail .pic-area img {
   width: 100%;
 }
-html body .destination .detail .txt-area {
+html body .board-container .board .destination .detail .txt-area {
   padding-left: 10px;
 }
-html body .destination .detail .txt-area .item {
+html body .board-container .board .destination .detail .txt-area .item {
   border-bottom: 2px dashed #379e65;
   padding: 10px 0px;
 }
-html body .destination .detail .txt-area .item .name {
+html body .board-container .board .destination .detail .txt-area .item .name {
   font-size: 16px;
   color: #379e65;
   margin-right: 10px;
 }
-html body .destination .detail .txt-area .item .content {
+html body .board-container .board .destination .detail .txt-area .item .content {
   color: #636363;
   font-size: 14px;
 }
-html body .destination .detail .txt-area .description {
+html body .board-container .board .destination .detail .txt-area .description {
   padding: 10px 0px;
 }
-html body .destination .detail .txt-area .description .name {
+html body .board-container .board .destination .detail .txt-area .description .name {
   font-size: 16px;
   color: #379e65;
   margin-bottom: 6px;
 }
-html body .destination .detail .txt-area .description p {
+html body .board-container .board .destination .detail .txt-area .description p {
   padding-right: 5px;
   font-size: 14px;
   color: #636363;
+}
+html body .board-container .board .destination .distance {
+  color: #379e65;
 }
