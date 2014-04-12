@@ -390,12 +390,15 @@ body {
   left: 40px;
   z-index: 10;
   width: 400px;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
+  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.4);
   box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 .aside >.head {
   font-size: 24px;
   padding: 20px;
+  -webkit-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
   color: #fff;
   background-color: #379e65;
@@ -414,6 +417,7 @@ body {
 .aside .cards .add .add-btn {
   text-align: center;
   background-color: #ccc;
+  -webkit-border-radius: 12px;
   border-radius: 12px;
   width: 24px;
   height: 24px;
@@ -442,7 +446,9 @@ body {
   border: 1px solid #ccc;
   padding: 5px;
   height: 20px;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
+  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 .aside .cards .add .state-view {
