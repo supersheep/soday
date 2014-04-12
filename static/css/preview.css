@@ -40,11 +40,13 @@ html body .board {
   margin: 50px auto;
 }
 html body .destination {
-  opacity: 0.95;
   margin-bottom: 25px;
-  background-color: #fff;
+  background-color: transparent;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.4);
 }
 html body .destination .title {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
   padding: 10px;
   font-size: 18px;
   color: #fff;
@@ -65,7 +67,7 @@ html body .destination .detail .txt-area {
   padding-left: 10px;
 }
 html body .destination .detail .txt-area .item {
-  border-bottom: 2px dotted #379e65;
+  border-bottom: 2px dashed #379e65;
   padding: 10px 0px;
 }
 html body .destination .detail .txt-area .item .name {
