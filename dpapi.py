@@ -20,7 +20,7 @@ def get_nearby_dpinfo(query_data):
 		paramSet.append(("longitude", query_data["longitude"].encode("utf-8")))
 	paramSet.append(("category", query_data["category"].encode("utf-8")))
 	paramSet.append(("limit", "20"))
-	
+
 	if("keyword" in query_data):
 		paramSet.append(("sort", "1"))
 	else:
@@ -50,6 +50,7 @@ def get_nearby_dpinfo(query_data):
 	requestUrl = apiUrl + "?" + url_trail
 
 	#模拟请求
+	print requestUrl
 	response = urllib.urlopen(requestUrl)
 
 	return json.loads(response.read())["businesses"]

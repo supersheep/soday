@@ -1,50 +1,82 @@
+@import "reset"
 * 
 	margin: 0; 
 	padding: 0; 
 html  
-	background: url(../img/bg.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	// background: url(../img/bg.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover
+	-moz-background-size: cover
+	-o-background-size: cover
+	background-size: cover
 	body
-		background-color:transparent;
-		font-family: "Hiragino Sans GB","Microsoft YaHei";
-		.board
-			width: 760px;
-			margin: 50px auto;
-		.destination
-			opacity:0.95
-			margin-bottom: 25px
-			background-color:white
-			.title
-				padding:10px
-				font-size:18px
-				color:white
-				background-color:#4B5F70
-			.detail
-				padding:15px
-				.pic-area
+		background-color:transparent
+		width: 800px;
+		margin: 50px auto;
+		font-family: "Hiragino Sans GB","Microsoft YaHei"
+		.abstract
+			background: #fafafa;
+			border:1px solid #eeeeee
+			margin-bottom:20px
+			.description
+				padding: 0 30px;
+				.date
+					margin-top:20px;
+				.title
+					font-size:34px;
+					padding:10px 0px
+				.users
 					img
-						width:100%
-				.txt-area
-					.item
-						border-bottom: 2px dotted #4B5F70;
-						padding:10px 0px
-						.name
-							font-size:16px;
-							color:#4B5F70
-							margin-right:10px
-						.content
-							color:#636363
-							font-size:14px
-					.description
-						padding:10px 0px
-						.name
-							font-size:16px;
-							color:#4B5F70
-							margin-bottom:6px
-						p
-							padding-right:15px
-							font-size:14px;
-							color:#636363
+						width:34px;
+						height:34px;
+						margin-right:10px
+			.map
+				img
+					width: 400px
+		.board-container
+			background: #fafafa
+			border:1px solid #eeeeee
+			.board
+				margin:20px 20px
+				.destination
+					margin-bottom: 25px
+					background-color:transparent
+					// box-shadow: 0px 1px 1px rgba(0,0,0,0.4)
+					.title
+						// border-top-right-radius: 8px
+						// border-top-left-radius: 8px
+						padding:10px
+						font-size:18px
+						color:white
+						background-color:#379e65
+					.detail
+						margin:0;
+						padding:15px 0px
+						.pic-area
+							padding-left:0px
+							img
+								width:100%
+						.txt-area
+							padding-left:10px
+							.item
+								border-bottom: 2px solid #dddddd
+								padding:10px 0px
+								.name
+									font-size:16px
+									color:#379e65
+									margin-right:10px
+								.content
+									color:#636363
+									font-size:14px
+							.description
+								padding:10px 0px
+								.name
+									font-size:16px
+									color:#379e65
+									margin-bottom:6px
+								p
+									padding-right:5px
+									font-size:14px
+									color:#636363
+					.distance
+						color:#379e65
+						

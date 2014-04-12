@@ -1,14 +1,3 @@
-
-
-var Card = function(settings){
-    this.title = settings.title;
-    this.location = settings.location;
-    this.poi = setting.poi;
-    this.time = setting.time;
-    this.detail = setting.detail;
-}
-
-
 // /tourlist/api/searchdpshop?query={"keyword":"中山公园","category":["美食","休闲娱乐"]}
 // /tourlist/api/searchdpshop?query={
 //     keyword:
@@ -18,56 +7,30 @@ var Card = function(settings){
 
 // /tourlist/api/add
 //     : id
-
-function initAside(){
-
-}
-
-function initMap(){
-    var latlng = new DPMap.maps.LatLng(31.21789, 121.41403);
-    console.log(latlng);
-    this.map = new DPMap.maps.Map($("#map").get(0), {
-        center: latlng,
-        zoom: 10,
-        mapTypeId: DPMap.maps.MapTypeId.ROADMAP,
-        panControlOptions:{
-            position: DPMap.maps.ControlPosition.TOP_RIGHT
-        },
-        zoomControlOptions: {
-            position: DPMap.maps.ControlPosition.RIGHT_TOP,
-            style:DPMap.maps.ZoomControlStyle.SMALL
-        }
-    });
-}
-
-
 var app = angular.module("soday",[]);
 
-app.factory("SearchService",["$http", function($http){
+app.directive("map",["$rootScope",function($rootScope){
     return {
-        get: function(opt){
-            opt = opt || {};
-            var data = {
-                "category": opt.category,
-                "keyword": opt.keyword
-            };
-            return $http.get("/tourlist/api/searchdpshop",{
-                params: {
-                    query: JSON.stringify(data)
-                }
-            });
+        restrict:"E",
+        template:"<div id='{{mapId}}'><div class='map-cont'></div></div>",
+        replace: true,
+        scope:{
+            zoom:"=",
+            center:"=",
+            mapId:"@"
         },
-        nearby: function(opt){
-            opt = opt || {};
-            var latlng = opt.latlng;
-            var data = {
-                "latitude": latlng.lat,
-                "longitude": latlng.lng,
-                "category": opt.category
-            }
-            return $http.get("/tourlist/api/nearbydpshop",{
-                params: {
-                    query: JSON.stringify(data)
+        link: function(scope, elem, attrs){
+            console.log(scope.center,scope.zoom)
+            $rootScope.map = new DPMap.maps.Map(elem.find(".map-cont").get(0), {
+                center: new DPMap.maps.LatLng(scope.center[0],scope.center[1]),
+                zoom: scope.zoom,
+                mapTypeId: DPMap.maps.MapTypeId.ROADMAP,
+                panControlOptions:{
+                    position: DPMap.maps.ControlPosition.TOP_RIGHT
+                },
+                zoomControlOptions: {
+                    position: DPMap.maps.ControlPosition.RIGHT_TOP,
+                    style:DPMap.maps.ZoomControlStyle.SMALL
                 }
             });
         }
@@ -75,37 +38,174 @@ app.factory("SearchService",["$http", function($http){
 }]);
 
 
-app.controller("SodayCtrl",["$scope","$http",function($scope,$http){
+app.factory("SearchService",["$http","$q", function($http, $q){
+    return {
+        search: function(opt){
+            var deferred = $q.defer();
+            opt = opt || {};
+            var latlng = opt.latlng;
+            var params = {
+                "category": opt.category
+            };
+            if(opt.keyword){
+                params.keyword = opt.keyword;
+            }
+            if(latlng){
+                params.latitude = latlng.lat;
+                params.longitude = latlng.lng;
+            }
+            $http.get("/tourlist/api/searchdpshop",{
+                params: params
+            }).then(function(res){
+                var data = res.data.map(function(item){
+                    return {
+                        rating_img: item.rating_s_img_url,
+                        title: item.name,
+                        addr: item.address,
+                        // latlng: new DPMap.maps.LatLng(item.latitude, item.longitude),
+                        latlng: [item.latitude,item.longitude],
+                        tags: item.categories,
+                        url: item.business_url,
+                        price: item.avg_price
+                    }
+                });
+                deferred.resolve(data);
+            },function(){
+                deferred.reject();
+            });
+            return deferred.promise;
+        }
+    }
+}]);
+
+
+app.controller("SodayCtrl",["$scope","$rootScope","SearchService","$timeout",function($scope,$rootScope, SearchService, $timeout){
     $scope.title = "钱满和嘟嘟的周末";
     $scope.date = "2014-04-12";
+    $scope.keyword = "中山公园";
     $scope.cards = [{
         mod: "add"
     }];
 
+    $scope.winHeight = $(window).height();
+
+    $scope.mapCenter = [31.1789,120.9];
+    $scope.mapZoom = 10;
+
+
     $scope.options = [];
     $scope.loading = false;
+    $scope.selecting = false;
+    $scope.currentCard = $scope.cards[0];
 
-    $scope.search = function(){
-        var keywords = $scope.keywords;
+    $scope.category = "美食";
+    $scope.categories = ["美食","休闲娱乐"];
+
+    var optionsMarkers = [];
+    var cardMarkers = [];
+
+    function adjustBounds(markers){
+        var map = $rootScope.map;
+        var bounds = new DPMap.maps.LatLngBounds();
+        markers.forEach(function (marker) {
+            var latlng = marker.getPosition();
+            bounds.extend(latlng);
+        });
+        map.setCenter(bounds.getCenter());
+        map.fitBounds(bounds);
+    }
+
+    function addOptionMarker(latlng){
+        var map = $rootScope.map;
+        var marker = new DPMap.maps.Marker({
+            map: map, // a map instance
+            position: new DPMap.maps.LatLng(latlng[0],latlng[1])
+        });
+        optionsMarkers.push(marker);
+    }
+
+    function addCardMarker(latlng){
+        var map = $rootScope.map;
+        var marker = new DPMap.maps.Marker({
+            map: map, // a map instance
+            position: new DPMap.maps.LatLng(latlng[0],latlng[1])
+        });
+        cardMarkers.push(marker);
+    }
+
+    $scope.search = function(keyword){
+        keyword = keyword || $scope.keyword;
+        var params = {
+            category: $scope.category,
+            keyword: keyword
+        };
+
+        if($scope.lat && $scope.lng){
+            params.latlng = {
+                lat: $scope.lat,
+                lng: $scope.lng
+            }
+        }
         $scope.loading = true;
-        $scope.options = $http.get("/api/activities").then(function(){
-            $scope.loading = true;
+        $scope.selecting = true;
+        $scope.options.length = 0;
+        SearchService.search(params).then(function(data){
+            $scope.options = data;
+            $scope.loading = false;
+        },function(){
+            $scope.loading = false;
         });
     }
 
-    $scope.addAfter = function(index){
-        var cards = $scope.cards;
-        var before = cards.split(0,index);
-        $scope.cards = before.concat({
-            mod:"add"
-        }).concat(cards);
+    $scope.$watch("options.length",function(){
+        $scope.updateMarkers();
+    });
+
+    $scope.select = function(card){
+        angular.extend($scope.currentCard,card);
+        $scope.currentCard.mod = "view";
+        $scope.options.length = 0;
+        $scope.selecting = false;
+        $scope.keyword = "";
+        addCardMarker(card.latlng);
     }
-    $scope.addBeforeFirst = function(){
-        $scope.cards.unshift({
-            mod:"add"
+
+    $scope.updateMarkers = function(){
+        var map = $rootScope.map
+        optionsMarkers.forEach(function(marker){
+            marker.setMap(null);
         });
+        optionsMarkers = [];
+        $scope.options.forEach(function(item){
+            addOptionMarker(item.latlng);
+        });
+        // auto zoom
+        if(optionsMarkers.length){
+            map && adjustBounds(optionsMarkers);
+            // map && map.panBy(-650,-100);
+        }else{
+            map && adjustBounds(cardMarkers);
+            // map && map.panBy(-450,-100);
+        }
     }
+    $scope.remove = function(index){
+        var card = $scope.cards[index];
+        $scope.cards.split()
+    }
+    $scope.add = function(index){
+        var cards = $scope.cards;
+        if($scope.currentCard.mod === "view"){
+            var newCard = {
+                mod:"add"
+            };
+            cards.push(newCard);
+            $scope.currentCard = newCard;
+            $timeout(function(){
+                $(".search-input").last().get(0).focus();
+            });
+        }
+    }
+
+    $scope.search();
 
 }]);
-
-initMap();
