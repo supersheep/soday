@@ -384,18 +384,56 @@ body {
   width: 100%;
   height: 100%;
 }
+#map {
+  width: 100%;
+  height: 100%;
+}
+#map .map-cont {
+  width: 100%;
+  height: 100%;
+}
+.aside .cards .card,
+.search-list .card {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  height: 100px;
+  border-bottom: 1px solid #eee;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.aside .cards .card .tit,
+.search-list .card .tit {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.aside .cards .card .addr,
+.search-list .card .addr {
+  height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
 .aside {
   position: absolute;
   top: 40px;
   left: 40px;
   z-index: 10;
   width: 400px;
+  height: 550px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.4);
   box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
-.aside >.head {
+.aside > .head {
   font-size: 24px;
   padding: 20px;
   -webkit-border-radius: 5px 5px 0 0;
@@ -403,18 +441,19 @@ body {
   color: #fff;
   background-color: #379e65;
 }
-.aside >.head .date {
+.aside > .head .date {
   font-size: 14px;
 }
 .aside .cards-wrap {
   height: 450px;
+  overflow: auto;
   background-color: #fff;
 }
-.aside .cards .add {
+.aside .add {
   padding: 20px;
   text-align: center;
 }
-.aside .cards .add .add-btn {
+.aside .add .add-btn {
   text-align: center;
   background-color: #ccc;
   -webkit-border-radius: 12px;
@@ -427,21 +466,10 @@ body {
   background: #666;
   margin: 0 auto;
 }
-.aside .cards .card {
-  background-color: #fff;
-  padding: 20px;
-  height: 100px;
-  border-bottom: 1px solid #eee;
-  -webkit-transition: all 0.2s linear;
-}
-.aside .cards .card:hover {
-  background-color: #eee;
-  cursor: pointer;
-}
-.aside .cards .add .state-add {
+.aside .cards .state-add {
   display: block;
 }
-.aside .cards .add .state-add .search-input {
+.aside .cards .state-add .search-input {
   width: 200px;
   border: 1px solid #ccc;
   padding: 5px;
@@ -451,7 +479,7 @@ body {
   -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
-.aside .cards .add .state-view {
+.aside .cards .state-view {
   display: none;
 }
 .aside .cards .view .state-add {
@@ -463,4 +491,77 @@ body {
 }
 .aside .cards .view .state-view:hover .remove {
   position: absolute;
+}
+.search-list {
+  position: absolute;
+  left: 40px;
+  z-index: 5;
+  height: 550px;
+  top: 40px;
+  background-color: #fff;
+  overflow: auto;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  width: 320px;
+}
+.search-list.selecting {
+  left: 450px;
+}
+.search-list .card .add-btn {
+  display: none;
+}
+.search-list .card:hover .add-btn {
+  display: block;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  float: left;
+  background-color: #379e65;
+  color: #fff;
+  font-size: 20px;
+  -webkit-border-radius: 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  padding: 5px;
+  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+.search-list .card .rating-price {
+  a: 1;
+  zoom: 1;
+}
+.search-list .card .rating-price:before,
+.search-list .card .rating-price:after {
+  content: "";
+  display: table;
+}
+.search-list .card .rating-price:after {
+  clear: both;
+}
+.search-list .card .rating {
+  float: left;
+}
+.search-list .card .price {
+  float: left;
+  font-size: 14px;
+  color: #c00;
+}
+.search-list .card .tags {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+.search-list .card .tags .tag {
+  background-color: #379e65;
+  margin-left: 5px;
+  color: #fff;
+  padding: 3px 6px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 12px;
 }
