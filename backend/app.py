@@ -8,9 +8,9 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/tourlist/api/<int:tourid>', methods = ['GET'])
-def get_task(tourid):
-    data =  mongocli.find_tour(tourid)
+@app.route('/tourlist/api/<int:planid>', methods = ['GET'])
+def get_task(planid):
+    data =  mongocli.find_tour(planid)
     if(data):
     	data['_id'] = None
     	return jsonify(data)
@@ -19,16 +19,17 @@ def get_task(tourid):
 
 @app.route('/tourlist/api/add', methods = ['POST'])
 def add_task():
-	max_tourid = mongocli.get_max_tourid()+1
-	mongocli.insert_tour({"tourid":max_tourid})
-	return jsonify({"result":"success"})
+	max_planid = mongocli.get_max_planid()+1
+	mongocli.insert_tour({"planid":max_planid})
+	return jsonify({"planid":max_planid})
 
-@app.route('/tourlist/api/<int:tourid>',methods=['PUT'])
-def update_tour(tourid):
+@app.route('/tourlist/api/<int:planid>',methods=['PUT'])
+def update_tour(planid):
 	if not request.json:
 		abort(400)
 	else:
 		mongocli.update_tour(request.json)
+		return jsonify({"result":"success"})
 
 @app.route('/tourlist/api/searchdpshop',methods=['GET'])
 def get_search_dpshop():

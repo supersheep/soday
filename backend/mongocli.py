@@ -8,24 +8,25 @@ conn = Connection()
 db = conn.tourliste
 tours = db.tours
 
-def get_max_tourid():
-	maxresult = tours.find_one(sort=[("tourid", -1)])
+def get_max_planid():
+	maxresult = tours.find_one(sort=[("planid", -1)])
 	maxresult["_id"] = None
-	return maxresult["tourid"]
+	return maxresult["planid"]
 
 def insert_tour(data):
 	tours.insert(data)
 
 # data:{"name":name,"score":score}
-def update_score(data):
-    tours.update({"tourid":data["tourid"]},{"$set":data})
+def update_tour(data):
+    tours.update({"planid":data["planid"]},{"$set":data})
 
-def find_tour(tourid):
-	cursor = tours.find({"tourid":tourid})
+def find_tour(planid):
+	cursor = tours.find({"planid":planid})
 	if cursor.count() >0:
 		return cursor[0]
 	else:
 		return None
+
 
 # def find_and_remove_crazy():
 # 	w = dumps(crazy.find())
