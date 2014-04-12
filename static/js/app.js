@@ -20,6 +20,7 @@ app.directive("map",["$rootScope",function($rootScope){
             mapId:"@"
         },
         link: function(scope, elem, attrs){
+            console.log(scope.center,scope.zoom)
             $rootScope.map = new DPMap.maps.Map(elem.find(".map-cont").get(0), {
                 center: new DPMap.maps.LatLng(scope.center[0],scope.center[1]),
                 zoom: scope.zoom,
