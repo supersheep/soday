@@ -52,9 +52,11 @@ body {
   border: 1px solid #eee;
 }
 .board {
+  padding: 0px;
   margin: 20px 20px;
 }
 .board .destination {
+  list-style-type: none;
   margin-bottom: 25px;
   background-color: transparent;
 }

@@ -22,6 +22,8 @@ def get_all_plan():
 	})]
 	if(data):
 		return jsonify({"plans":data})
+	else:
+		return jsonify({})
 
 
 @app.route('/tourlist/api/<int:planid>', methods = ['GET'])
