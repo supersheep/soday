@@ -34,8 +34,17 @@ html {
 body {
   background-color: transparent;
   width: 800px;
-  margin: 50px auto;
+  margin: 30px auto;
   font-family: "Hiragino Sans GB", "Microsoft YaHei";
+}
+.nav {
+  background: #fafafa;
+  border: 1px solid #eee;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.nav a.btn {
+  margin-right: 10px;
 }
 .abstract {
   background: #fafafa;
@@ -47,10 +56,16 @@ body {
 }
 .abstract .description .date {
   margin-top: 20px;
+  color: #959595;
 }
 .abstract .description .title {
   font-size: 34px;
   padding: 10px 0px;
+}
+.abstract .description .title .ext {
+  color: #959595;
+  margin-left: 10px;
+  font-size: 26px;
 }
 .abstract .description .users img {
   width: 34px;
@@ -91,10 +106,11 @@ body {
   padding-left: 10px;
 }
 .board .destination .detail .txt-area .item {
-  border-bottom: 2px solid #ddd;
+  border-bottom: 1px solid #ddd;
   padding: 10px 0px;
 }
 .board .destination .detail .txt-area .item .name {
+  font-weight: bold;
   font-size: 16px;
   color: #379e65;
   margin-right: 10px;
@@ -107,6 +123,7 @@ body {
   padding: 10px 0px;
 }
 .board .destination .detail .txt-area .description .name {
+  font-weight: bold;
   font-size: 16px;
   color: #379e65;
   margin-bottom: 6px;
@@ -117,6 +134,8 @@ body {
   color: #636363;
 }
 .board .destination .distance {
+  font-size: 14px;
+  border-left: 2px dotted #379e65;
   color: #379e65;
-  color: rgba(51,119,153,0.933);
+  padding: 10px 13px;
 }

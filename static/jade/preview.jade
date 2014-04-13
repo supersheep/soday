@@ -4,11 +4,18 @@ html(lang="en",ng-app="soday")
 		meta(charset="utf-8")
 		link(rel="stylesheet",type="text/css",href="../css/bootstrap.min.css")
 		link(rel="stylesheet",type="text/css",href="../css/preview.css")
-	body
+		script(src="../js/angular.js")
+		script(src="../js/preview.js")
+	body(ng-controller="PreviewController")
+		div.row.nav
+			a.btn.btn-default(ng-click="getPDF()") 导出行程
+			a.btn.btn-default 继续编辑
+			a.btn.btn-default 分享行程
 		div.row.abstract
 			div.col-md-6.description 
 				.date 2012-12-22
 				.title ltebean的行程
+					span.ext 3站
 				.users 
 					span
 						img.img-circle(src="http://static.qyer.com/data/avatar/003/93/49/62_avatar_big.jpg")
@@ -34,7 +41,7 @@ html(lang="en",ng-app="soday")
 								div.name  介绍:
 								p.content 据说这里是上海“第一家”印度餐厅。店面“不大”，却巧妙地运用“镜子”分隔，而头顶“悬垂”的中国字和“异族风情浓郁”的小摆设，更为餐厅披上了一层“神秘”的面纱。服务生大多是“印度人”，“彬彬有礼”。食物“非常地道”，咖喱种类“比较全”，推荐喜欢“尝鲜”的朋友去试试。
 					div.distance
-						span | 两地距离：0.1 公里，1 分钟 
+						span 两地距离：0.1 公里，1 分钟 
 				li.destination()
 					div.title 2. 山林道
 					div.detail.row
