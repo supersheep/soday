@@ -1,7 +1,7 @@
 var gulp = require("gulp");
 var jade = require("gulp-jade");
 var stylus = require("gulp-stylus");
-
+var nib = require("nib");
 
 process.on("uncaughtException",function(err){
     console.log(err);
@@ -10,6 +10,8 @@ process.on("uncaughtException",function(err){
 gulp.task('stylus', function(){
     gulp.src(["./css/*.styl"])
         .pipe(stylus({
+            use: [nib()],
+            import : ["nib"],
             paths: ['./css']
         }))
         .pipe(gulp.dest('./css/'));

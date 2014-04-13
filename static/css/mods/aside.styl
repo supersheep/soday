@@ -2,7 +2,6 @@ $card
   position: relative
   background-color #fff
   padding 20px
-  height 100px
   border-bottom 1px solid #eee
   transition all .2s linear
   .tit
@@ -33,14 +32,32 @@ $card
     background-color #379e65
     .date
       font-size 14px
+    .save
+      position: absolute
+      right: 15px
+      top: 15px
+      padding: 5px
+      color: #fff
+      font-size: 16px
+      -webkit-border-radius: 5px
+      border-radius: 5px
+      /* -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.4) */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4)
+      padding: 5px 10px
+      border: 1px solid #3B855C
+      transition: all .2s linear
+      cursor: pointer
+      &:hover
+        background-color: #46AC73
   .cards-wrap
     height 450px
     overflow: auto
     background-color #fff
   .add
-    padding 20px
+    padding 10px 20px
     text-align center
     .add-btn
+      cursor pointer
       text-align center
       background-color #ccc
       border-radius 12px
@@ -58,7 +75,7 @@ $card
         width 200px
         border 1px solid #ccc
         padding 5px
-        height 20px
+        height 35px
         border-radius 5px
         box-shadow 0 2px 4px rgba(0,0,0,0.3)
     .state-view
@@ -94,18 +111,18 @@ $card
       display: none
     &:hover
       .add-btn
-        display: block;
-        position: absolute;
-        right: 25px;
-        top: 25px;
-        float: left;
-        background-color: #379e65;
-        color: #fff;
-        font-size: 20px;
-        border-radius: 24px;
-        cursor: pointer;
-        padding: 5px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        display: block
+        position: absolute
+        right: 25px
+        top: 25px
+        float: left
+        background-color: #379e65
+        color: #fff
+        font-size: 20px
+        border-radius: 24px
+        cursor: pointer
+        padding: 5px
+        box-shadow: 0 2px 4px rgba(0,0,0,0.4)
     .rating-price
       a:1
       clearfix()
