@@ -25,7 +25,7 @@ html(lang="en",ng-app="soday")
 				img(src="http://static.qyer.com/upload/plan_map_static/27/d0/396872/20140411210731947.PNG")
 		div.row.board-container
 			ul.board()
-				li.destination(ng-repeat="card in cards" ng-hide="$index==cards.length-1")
+				li.destination(ng-repeat="card in cards")
 					div.title {{$index+1}}. {{card.title}}
 					div.detail.row
 						div.pic-area.col-md-5() 
@@ -40,5 +40,5 @@ html(lang="en",ng-app="soday")
 							.description
 								div.name  介绍:
 								p.content 据说这里是上海“第一家”印度餐厅。店面“不大”，却巧妙地运用“镜子”分隔，而头顶“悬垂”的中国字和“异族风情浓郁”的小摆设，更为餐厅披上了一层“神秘”的面纱。服务生大多是“印度人”，“彬彬有礼”。食物“非常地道”，咖喱种类“比较全”，推荐喜欢“尝鲜”的朋友去试试。
-					div.distance(ng-hide="$index==cards.length-2")
+					div.distance(ng-hide="$index==cards.length-1")
 						span 两地距离：0.1 公里，1 分钟 
