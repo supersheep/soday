@@ -79,13 +79,22 @@ app.factory("SearchService",["$http","$q", function($http, $q){
 }]);
 
 
-app.controller("SodayCtrl",["$scope","$rootScope","SearchService","$timeout",function($scope,$rootScope, SearchService, $timeout){
-    $scope.title = "钱满和嘟嘟的周末";
-    $scope.date = "2014-04-12";
+
+app.controller("SodayCtrl",["$scope","$rootScope","SearchService","$timeout","$http",function($scope,$rootScope, SearchService, $timeout, $http){
+    $scope.id = +location.href.match(/plans\/(\d+)\/edit/)[1];
+    $scope.title = null;
+    $scope.date = null
     $scope.keyword = "中山公园";
     $scope.cards = [{
         mod: "add"
     }];
+
+    $http.get("/tourlist/api/" + $scope.id).then(function(resp){
+        var data = resp.data
+        $scope.title = data.title;
+        $scope.date = data.date;
+        $scope.cards = (data.cards || []).concat($scope.cards);
+    });
 
     $scope.winHeight = $(window).height();
 
@@ -204,6 +213,17 @@ app.controller("SodayCtrl",["$scope","$rootScope","SearchService","$timeout",fun
                 $(".search-input").last().get(0).focus();
             });
         }
+    }
+
+    $scope.save = function(){
+        console.log($scope);
+        $http.put("/tourlist/api/" + $scope.id,{
+            title: $scope.title,
+            date: $scope.date,
+            cards: $scope.cards
+        }).then(function(){
+            console.log("saved");
+        });
     }
 
     $scope.search();

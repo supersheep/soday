@@ -1,0 +1,53 @@
+.main
+    width: 960px
+    margin: 0 auto
+    padding: 50px 0
+
+.card
+    clearfix()
+    background-color: #fff
+    border-radius: 5px
+    padding: 20px
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3)
+    float: left
+    width: 250px
+    height: 150px
+    cursor: pointer
+    transition: all .15s linear
+    transform: translate3d(0,0,0)
+    color: #fff
+    background-size: cover
+    background-color: #ccc
+    margin-right: 30px
+    margin-bottom: 30px
+
+.plan
+    .tit
+        font-size: 18px
+        line-height: 1.5
+        text-shadow: 0 2px 2px rgba(0,0,0,0.6)
+    .date
+        font-size: 12px
+        margin-bottom: 10px
+        text-shadow: 0 2px 2px rgba(0,0,0,0.6)
+    &:hover
+        transform: translate3d(0,-5px,0);
+        box-shadow: 0 7px 21px rgba(0,0,0,0.15);
+    .step
+        float: left
+        .text
+            float: left
+            text-shadow: 0 2px 2px rgba(0,0,0,0.6)
+        .arrow
+            position: relative
+            float: left
+            top: 2px
+            margin: 0 5px
+
+.create
+    text-align: center
+    background-image: url("/img/covers/cover-add.jpg")
+    .icon-plus
+        text-shadow: 0 1px 1px rgba(0,0,0,0.6)
+        font-size: 48px
+        margin-top: 30px

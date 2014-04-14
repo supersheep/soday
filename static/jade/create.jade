@@ -1,0 +1,11 @@
+extend layout
+
+block styles
+    style.
+        body, html,.map {width: 100%;height: 100%;overflow: hidden;margin:0;}
+    link(rel="stylesheet",type="text/css",href="/css/create.css")
+
+block content
+    div.main
+        include mods/map
+        include mods/aside

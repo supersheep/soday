@@ -6,6 +6,7 @@ mixin add(click)
     .head
         .tit {{title}}
         .date {{date}}
+        .save(ng-click="save()") 保存
     .cards-wrap
         ul.cards
             li.card(ng-repeat="card in cards")

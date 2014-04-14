@@ -1,0 +1,84 @@
+.main {
+  width: 960px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+.card {
+  zoom: 1;
+  background-color: #fff;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 20px;
+  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  float: left;
+  width: 250px;
+  height: 150px;
+  cursor: pointer;
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  -ms-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  color: #fff;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-color: #ccc;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+.card:before,
+.card:after {
+  content: "";
+  display: table;
+}
+.card:after {
+  clear: both;
+}
+.plan .tit {
+  font-size: 18px;
+  line-height: 1.5;
+  text-shadow: 0 2px 2px rgba(0,0,0,0.6);
+}
+.plan .date {
+  font-size: 12px;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 2px rgba(0,0,0,0.6);
+}
+.plan:hover {
+  -webkit-transform: translate3d(0, -5px, 0);
+  -moz-transform: translate3d(0, -5px, 0);
+  -o-transform: translate3d(0, -5px, 0);
+  -ms-transform: translate3d(0, -5px, 0);
+  transform: translate3d(0, -5px, 0);
+  -webkit-box-shadow: 0 7px 21px rgba(0,0,0,0.15);
+  box-shadow: 0 7px 21px rgba(0,0,0,0.15);
+}
+.plan .step {
+  float: left;
+}
+.plan .step .text {
+  float: left;
+  text-shadow: 0 2px 2px rgba(0,0,0,0.6);
+}
+.plan .step .arrow {
+  position: relative;
+  float: left;
+  top: 2px;
+  margin: 0 5px;
+}
+.create {
+  text-align: center;
+  background-image: url("/img/covers/cover-add.jpg");
+}
+.create .icon-plus {
+  text-shadow: 0 1px 1px rgba(0,0,0,0.6);
+  font-size: 48px;
+  margin-top: 30px;
+}

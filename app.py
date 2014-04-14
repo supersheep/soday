@@ -9,14 +9,32 @@ import json
 
 app = Flask(__name__, static_url_path='')
 
+@app.route('/tourlist/api/all')
+def get_all_plan():
+	data = [{
+		"title": "title" in data and data["title"] or None,
+		"id": data["planid"],
+		"date": "date" in data and data["date"] or None,
+		"cards": "cards" in data and data["cards"] or []
+	} for data in mongocli.tours.find({
+		"title":{
+			"$exists": True
+		}
+	})]
+	if(data):
+		return jsonify({"plans":data})
+	else:
+		return jsonify({})
+
+
 @app.route('/tourlist/api/<int:planid>', methods = ['GET'])
 def get_task(planid):
-    data =  mongocli.find_tour(planid)
-    if(data):
-    	data['_id'] = None
-    	return jsonify(data)
-    else:
-    	return jsonify({"result":"none"})
+	data =  mongocli.find_tour(planid)
+	if(data):
+		data['_id'] = None
+		return jsonify(data)
+	else:
+		return jsonify({"result":"none"})
 
 
 @app.route('/tourlist/api/add', methods = ['POST'])
@@ -30,6 +48,7 @@ def update_tour(planid):
 	if not request.json:
 		abort(400)
 	else:
+		request.json["planid"]=planid
 		mongocli.update_tour(request.json)
 		return jsonify({"result":"success"})
 
@@ -52,7 +71,17 @@ def get_douban_events():
 @app.route('/')
 def index():
 	# return url_for('static', filename='style.css')
-	return  app.send_static_file('html/index.html')
+	return app.send_static_file('html/index.html')
 	# return "aeqwe"
+
+
+@app.route('/plans/<int:planid>/edit')
+def edit(planid):
+	return app.send_static_file('html/edit.html')
+
+@app.route('/plans/<int:planid>')
+def view(planid):
+	return app.send_static_file('html/preview.html')
+
 if __name__ == "__main__":
 	app.run(debug = True)
