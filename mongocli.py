@@ -27,18 +27,17 @@ def update_tour(data):
 
 def find_tour(planid):
 	return tours.find_one({"planid":planid})
-	# if cursor.count() >0:
-	# 	return cursor[0]
-	# else:
-	# 	return None
+
 
 def find_all_tours():
 	return tours.find()
 
-# def find_and_remove_crazy():
-# 	w = dumps(crazy.find())
-# 	crazy.remove()
-# 	return w
+# douban eventlist
 
-# def modify_crazy(data):
-# 	crazy.update({"name":data["name"]},{"$set":{"data":data}},upsert=True)
+doubanevent = db.doubanevent
+
+def find_douban_eventlist(date):
+	return doubanevent.find_one({"date":date})["event"]
+
+def save_douban_eventlist(event):
+	doubanevent.save(event)
