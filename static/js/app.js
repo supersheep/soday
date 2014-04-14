@@ -66,7 +66,9 @@ app.factory("SearchService",["$http","$q", function($http, $q){
                         latlng: [item.latitude,item.longitude],
                         tags: item.categories,
                         url: item.business_url,
-                        price: item.avg_price
+                        price: item.avg_price,
+                        photoUrl: item.s_photo_url,
+                        tel: item.telephone
                     }
                 });
                 deferred.resolve(data);
@@ -81,7 +83,7 @@ app.factory("SearchService",["$http","$q", function($http, $q){
 
 
 app.controller("SodayCtrl",["$scope","$rootScope","SearchService","$timeout","$http",function($scope,$rootScope, SearchService, $timeout, $http){
-    $scope.id = +location.href.match(/plans\/(\d+)\/edit/)[1];
+    $scope.id = +location.href.match(/plans\/(\d+)/)[1];
     $scope.title = null;
     $scope.date = null
     $scope.keyword = "中山公园";

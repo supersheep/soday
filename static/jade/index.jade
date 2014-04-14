@@ -46,7 +46,7 @@ block scripts
 
 block content
     .main(ng-controller="PlansCtrl")
-        .plans(ng-show="plans.length",ng-cloak)
+        .plans()
             a.plan.card(ng-repeat="plan in plans",ng-href="/plans/{{plan.id}}",ng-style="{'background-image':'{{bgpath($index)}}'}")
                 .tit {{plan.title}}
                 .date {{plan.date}}
