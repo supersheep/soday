@@ -1,5 +1,5 @@
 from douban_client import DoubanClient
-import mongocli
+from util import mongocli
 import json
 
 API_KEY = '0d0690ea685259262713b2bf38f70b72'
